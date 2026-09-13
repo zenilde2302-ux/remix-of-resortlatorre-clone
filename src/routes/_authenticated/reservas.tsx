@@ -59,7 +59,8 @@ type ReservaRow = Awaited<ReturnType<typeof listReservas>>[number];
 
 const statusOptions = ["efetivada", "pendente", "cancelada", "negada"];
 
-function toFormState(row: Record<string, unknown>): FormState {
+function toFormState(source: ReservaRow): FormState {
+  const row = source as unknown as Record<string, unknown>;
   const next = { ...emptyForm };
   for (const key of Object.keys(emptyForm) as (keyof FormState)[]) {
     const value = row[key];
