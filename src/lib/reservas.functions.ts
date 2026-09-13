@@ -99,14 +99,14 @@ export const saveReserva = createServerFn({ method: "POST" })
     if (data.id) {
       const { error } = await context.supabase
         .from("reservas")
-        .update(data.values)
+        .update(data.values as never)
         .eq("id", data.id);
       if (error) throw new Error(error.message);
       return { id: data.id };
     }
     const { data: inserted, error } = await context.supabase
       .from("reservas")
-      .insert(data.values)
+      .insert(data.values as never)
       .select("id")
       .single();
     if (error) throw new Error(error.message);

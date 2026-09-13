@@ -55,6 +55,7 @@ const emptyForm = {
 };
 
 type FormState = typeof emptyForm;
+type ReservaRow = Awaited<ReturnType<typeof listReservas>>[number];
 
 const statusOptions = ["efetivada", "pendente", "cancelada", "negada"];
 
@@ -133,7 +134,7 @@ function AdminReservasPage() {
     navigate({ to: "/auth", replace: true });
   }
 
-  const rows = (reservas.data ?? []) as Record<string, any>[];
+  const rows: ReservaRow[] = reservas.data ?? [];
   const termo = filtro.replace(/\D/g, "");
   const visiveis = rows.filter((r) =>
     filtro.trim() === ""
