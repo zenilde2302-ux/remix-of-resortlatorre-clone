@@ -14,16 +14,124 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      reservas: {
+        Row: {
+          acomodacao: string | null
+          cep: string | null
+          check_in: string
+          check_out: string
+          codigo_pagamento: string | null
+          codigo_reserva: string
+          created_at: string
+          data_venda: string | null
+          forma_pagamento: string | null
+          hospede_cpf: string
+          hospede_email: string | null
+          hospede_nome: string
+          hospede_telefone: string | null
+          id: string
+          localizador: string | null
+          observacoes: string | null
+          parcelas: number | null
+          status: string
+          status_pagamento: string | null
+          telefone_curto: string | null
+          titular_cpf: string | null
+          titular_nome: string | null
+          updated_at: string
+          valor: number | null
+        }
+        Insert: {
+          acomodacao?: string | null
+          cep?: string | null
+          check_in: string
+          check_out: string
+          codigo_pagamento?: string | null
+          codigo_reserva: string
+          created_at?: string
+          data_venda?: string | null
+          forma_pagamento?: string | null
+          hospede_cpf: string
+          hospede_email?: string | null
+          hospede_nome: string
+          hospede_telefone?: string | null
+          id?: string
+          localizador?: string | null
+          observacoes?: string | null
+          parcelas?: number | null
+          status?: string
+          status_pagamento?: string | null
+          telefone_curto?: string | null
+          titular_cpf?: string | null
+          titular_nome?: string | null
+          updated_at?: string
+          valor?: number | null
+        }
+        Update: {
+          acomodacao?: string | null
+          cep?: string | null
+          check_in?: string
+          check_out?: string
+          codigo_pagamento?: string | null
+          codigo_reserva?: string
+          created_at?: string
+          data_venda?: string | null
+          forma_pagamento?: string | null
+          hospede_cpf?: string
+          hospede_email?: string | null
+          hospede_nome?: string
+          hospede_telefone?: string | null
+          id?: string
+          localizador?: string | null
+          observacoes?: string | null
+          parcelas?: number | null
+          status?: string
+          status_pagamento?: string | null
+          telefone_curto?: string | null
+          titular_cpf?: string | null
+          titular_nome?: string | null
+          updated_at?: string
+          valor?: number | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      claim_admin: { Args: never; Returns: boolean }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +258,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin"],
+    },
   },
 } as const
